@@ -1,0 +1,15 @@
+services:
+
+  bottle:
+    build: ./bottle
+    container_name: bottle-app
+    restart: always
+    expose:
+      - 8080
+
+  nginx:
+    build: ./nginx
+    container_name: nginx-bottle
+    restart: always
+    ports:
+      - "80:80"
