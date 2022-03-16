@@ -1,5 +1,5 @@
-#Python-Goof
-Snyk's vulnerable playground for exploring vulnerabilities
+# Python-Goof
+Snyk's vulnerable playground for exploring vulnerabilities in Python code, modules and containers.
 
 
 
