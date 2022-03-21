@@ -1,0 +1,30 @@
+services:
+
+  webapp:
+    build: .
+    container_name: webapp
+    restart: always
+    depends_on:
+      - mongodb
+      - celery-worker
+    command: ["python","webapp.py"]
+
+  celery-worker:
+    build: .
+    container_name: celery-worker
+    restart: "no"
+    depends_on:
+      - mongodb
+    command: ["celery","-A","tasks","worker","--loglevel=INFO"]
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+
+  nginx:
+    build: ./nginx
+    container_name: nginx-bottle
+    restart: always
+    ports:
+      - "80:80"
