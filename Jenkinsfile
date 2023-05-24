@@ -5,12 +5,6 @@ pipeline {
         SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     stages {
-        stage('Pull deps') {
-            steps {
-                echo 'Pulling dependencies...'
-                sh 'cd bottle; pip install -r requirements.txt'
-            }
-        }
         stage('Scan') {
             agent {
                 docker {
@@ -20,7 +14,9 @@ pipeline {
             }
             steps {
                 echo 'Testing...'
-                sh 'cd bottle; snyk test --fail-on-issues=false'
+                sh 'cd bottle'
+                sh 'pip install -r requirements.txt'
+                sh 'snyk test --fail-on-issues=false'
             }
 
         }
