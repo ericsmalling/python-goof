@@ -8,8 +8,9 @@ pipeline {
         stage('Scan') {
             agent {
                 docker {
-                    image 'snyk/snyk:linux'
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                    image 'snyk/snyk:python-3.9'
+                    args '-e SNYK_TOKEN'
+                    workDir 'bottle'
                 }
             }
             steps {
