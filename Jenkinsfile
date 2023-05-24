@@ -14,9 +14,8 @@ pipeline {
             }
             steps {
                 echo 'Testing...'
-                sh 'cd bottle'
-                sh 'pip install -r requirements.txt'
-                sh 'snyk test --fail-on-issues=false'
+                sh 'cd bottle; pip install -r requirements.txt'
+                sh 'cd bottle; snyk test --fail-on-issues=false'
             }
 
         }
