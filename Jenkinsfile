@@ -5,10 +5,11 @@ pipeline {
         SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     stages {
-        stage('Pull deps')
-        steps {
-            echo 'Pulling dependencies...'
-            sh 'cd bottle; pip install -r requirements.txt'
+        stage('Pull deps') {
+            steps {
+                echo 'Pulling dependencies...'
+                sh 'cd bottle; pip install -r requirements.txt'
+            }
         }
         stage('Scan') {
             agent {
