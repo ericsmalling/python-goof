@@ -10,10 +10,10 @@ pipeline {
                 docker {
                     image 'snyk/snyk:python-3.9'
                     args '-e SNYK_TOKEN'
-                    workDir 'bottle'
                 }
             }
             steps {
+                dir("bottle")
                 echo 'Testing...'
                 sh 'snyk test --fail-on-issues=false'
             }
