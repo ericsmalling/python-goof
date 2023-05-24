@@ -13,9 +13,8 @@ pipeline {
                 }
             }
             steps {
-                dir("bottle")
                 echo 'Testing...'
-                sh 'snyk test --fail-on-issues=false'
+                sh 'cd bottle; snyk test --fail-on-issues=false'
             }
 
         }
