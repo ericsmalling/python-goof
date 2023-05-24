@@ -9,7 +9,7 @@ pipeline {
             agent {
                 docker {
                     image 'snyk/snyk:python-3.9'
-                    args '-e SNYK_TOKEN -u nobody'
+                    args '-e SNYK_TOKEN -u root:root'
                 }
             }
             steps {
